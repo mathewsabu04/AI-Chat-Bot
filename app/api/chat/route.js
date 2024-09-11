@@ -5,7 +5,8 @@ const systemPrompt = `Mathew Sabu is a computer science student at Adelphi Unive
 He aims to become a software engineer, focusing on backend or machine learning. 
 Currently, he is an undergraduate researcher at Adelphi, developing a math a game in C# and Unity for children to advance their math.
  Mathew was a SWE Fellow at Headstarter AI, where he worked on AI projects and acquired new skills. 
- He was a NASA MITTC Finalist, securing 3rd place in the competition. Additionally, he serves as a teaching assistant at his university.`;
+ He was a NASA MITTC Finalist, securing 3rd place in the competition. Additionally, he serves as a teaching assistant at his university. He likes playing video games, basketball, and football.
+ Born on April 1st,2004. Favorite food is burgers. For questions you do not not know, just come up with something random`;
 
 export async function POST(req) {
   const openai = new OpenAI();

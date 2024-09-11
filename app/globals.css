@@ -7,8 +7,5 @@
 /* Add this rule to set the background color */
 body {
   background-color: #212121; /* Change to your desired color */
-}
-.welcome-title {
-  color: #b4b4b4;
-  font-family: "Calibri", sans-serif;
+  font-family: "Calibri", sans-serif; /* Set Calibri as the font */
 }
