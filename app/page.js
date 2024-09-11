@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { Box } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import Stack from "@mui/material/Stack"; // Corrected import
 import Typography from "@mui/material/Typography"; // Add this import
 
@@ -53,17 +53,32 @@ export default function Home() {
             </Box>
           ))}
         </Stack>
+        <Box display="flex" alignItems="center">
+          <TextField
+            variant="outlined"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            color="primary"
+            placeholder="Type a message..."
+            fullWidth
+            sx={{
+              flex: 1,
+              "& .MuiInputBase-input": { color: "#f9f9f9" },
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "16px",
+                borderColor: "1px solid transparent",
+              },
+            }}
+          />
+          <Button
+          
+            variant="contained"
+            sx={{ marginLeft: 2, backgroundColor: "#171717", color: "#f9f9f9" }} // Changed color prop to sx
+          >
+            Send
+          </Button>
+        </Box>
       </Stack>
-      <Box
-        direction="column"
-        width="800px"
-        height="100px"
-        border="1px solid white"
-        p={3}
-        mt={3}
-        mb={8}
-        borderRadius={16}
-      ></Box>
     </Box>
   );
 }
