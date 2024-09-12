@@ -16,6 +16,46 @@ export default function Home() {
 
   // what the user will send
   const [message, setMessage] = useState("");
+
+  const sendMessage = async () => {
+    setMessage("");
+    setMessages((messages) => [
+      ...messages,
+      { role: "user", content: message },
+      { role: "assistant", content: "" },
+    ]);
+
+    const response = fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify([...messages, { role: "user", content: message }]),
+    }).then(async (res) => {
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+
+      let result = "";
+      return reader.read().then(function processText({ done, value }) {
+        if (done) {
+          return result;
+        }
+        const text = decoder.decode(value || new Int8Array(), { strem: true });
+        sendMessages((messages) => {
+          let lastMessage = messages[messages.length - 1];
+          let otherMessages = message.slice(0, messages.length - 1);
+          return [
+            ...otherMessages,
+            {
+              ...lastMessage,
+              content: lastMessage.content + text,
+            },
+          ];
+        });
+        return reader.read().then(processText);
+      });
+    });
+  };
   const theme = createTheme({
     // Add theme creation
     palette: {
@@ -40,7 +80,13 @@ export default function Home() {
         alignItems="center"
       >
         <Box>
-          <Typography variant="h2" align="center" gutterBottom color="#f9f9f9">
+          <Typography
+            variant="h2"
+            align="center"
+            gutterBottom
+            color="#f9f9f9"
+            mt={5}
+          >
             MatBot
           </Typography>
         </Box>
@@ -86,6 +132,7 @@ export default function Home() {
                 backgroundColor: "#171717",
                 color: "#f9f9f9",
               }}
+              onClick={sendMessage}
             >
               Send
             </Button>
