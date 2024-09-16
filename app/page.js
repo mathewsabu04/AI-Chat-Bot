@@ -35,15 +35,15 @@ export default function Home() {
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
 
-      let result = "";
+      let result = " ";
       return reader.read().then(function processText({ done, value }) {
         if (done) {
           return result;
         }
         const text = decoder.decode(value || new Int8Array(), { strem: true });
-        sendMessages((messages) => {
+        setMessages((messages) => {
           let lastMessage = messages[messages.length - 1];
-          let otherMessages = message.slice(0, messages.length - 1);
+          let otherMessages = messages.slice(0, messages.length - 1);
           return [
             ...otherMessages,
             {
@@ -90,7 +90,7 @@ export default function Home() {
             MatBot
           </Typography>
         </Box>
-        <Stack direction="column" width="800px" height="700px" p={3}>
+        <Stack direction="column" width="645px" height="700px" p={3}>
           <Stack
             direction="column"
             spacing={2}
