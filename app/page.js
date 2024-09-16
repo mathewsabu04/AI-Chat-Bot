@@ -103,9 +103,7 @@ export default function Home() {
               <Box
                 key={index}
                 display="flex"
-                bgcolor={
-                  message.role === "assistant" ? "#171717" : "secondary.main"
-                }
+                bgcolor={message.role === "user" ? "transparent" : "#171717"} // No background for user messages
                 color="#f9f9f9"
                 borderRadius={16}
                 p={3}

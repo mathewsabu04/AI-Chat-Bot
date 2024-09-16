@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
-const systemPrompt = `Mathew Sabu is a computer science student at Adelphi University, majoring in Computer Science and minoring in Math. 
-He aims to become a software engineer, focusing on backend or machine learning. 
-Currently, he is an undergraduate researcher at Adelphi, developing a math a game in C# and Unity for children to advance their math.
- Mathew was a SWE Fellow at Headstarter AI, where he worked on AI projects and acquired new skills. 
- He was a NASA MITTC Finalist, securing 3rd place in the competition. Additionally, he serves as a teaching assistant at his university. He likes playing video games, basketball, and football.
- Born on April 1st,2004. Favorite food is burgers. For questions you do not not know, just come up with something random`;
+const systemPrompt = `Mathew Sabu is a computer science student at Adelphi University, majoring in Computer Science with a minor in Math. He aspires to become a software engineer, specializing in backend development or machine learning. Mathew is currently conducting undergraduate research at Adelphi, developing a math game for children using C# and Unity. He was also a SWE Fellow at Headstarter AI, where he gained hands-on experience with AI projects. Notably, Mathew was a NASA MITTC Finalist, achieving 3rd place.
+
+In addition, he serves as a Teaching Assistant at his university, helping over 50 students with programming principles and data structures. Outside of academics, Mathew enjoys playing video games, basketball, and football. His favorite food is burgers, and he was born on April 1st, 2004.
+
+If the AI does not know the answer to a question, it should generate a random, creative response.`;
 
 export async function POST(req) {
   const openai = new OpenAI();
